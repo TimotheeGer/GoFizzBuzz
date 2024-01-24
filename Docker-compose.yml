@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    build: ./docker-gs-ping
+    build: ./fizzBuzz
     ports:
       - "9090:9090"
     environment:
