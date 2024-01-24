@@ -26,4 +26,4 @@ Pour lancer le serveur, suivez ces étapes :
 ## Endpoint de Statistiques
 - **URL** : `/statistics`
 - **Méthode** : `GET`
-- **Description** : Retourne les paramètres de la requête la plus fréquente et le nombre de fois où elle a été effectuée.
+- **Description** : Retourne les paramètres de la requête la plus fréquente et le nombre de fois effectuée.
