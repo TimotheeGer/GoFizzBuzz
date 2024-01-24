@@ -5,21 +5,16 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
+	"fizzBuzz/handlers"
+	redisclient "fizzBuzz/redisClient"
+
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"training.go/fizzBuzz/handlers"
-	redisclient "training.go/fizzBuzz/redisClient"
 )
 
 func main() {
 
 	fmt.Println("Go Fizz-Buzz")
-
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Erreur lors du chargement du fichier .env")
-	}
 
 	client, err := redisclient.StartRedis()
 	if err != nil {

@@ -1,10 +1,9 @@
-module training.go/fizzBuzz
+module fizzBuzz
 
 go 1.21.6
 
 require (
 	github.com/go-redis/redis/v8 v8.11.5
-	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo v3.3.10+incompatible
 )
 

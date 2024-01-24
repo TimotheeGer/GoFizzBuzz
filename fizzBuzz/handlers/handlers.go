@@ -10,11 +10,12 @@ import (
 	"net/http"
 	"strconv"
 
+	"fizzBuzz/models"
+	redisclient "fizzBuzz/redisClient"
+	"fizzBuzz/services"
+
 	"github.com/go-redis/redis/v8"
 	"github.com/labstack/echo"
-	"training.go/fizzBuzz/models"
-	redisclient "training.go/fizzBuzz/redisClient"
-	"training.go/fizzBuzz/services"
 )
 
 var ctx = context.Background()
@@ -68,7 +69,7 @@ func FizzBuzzHandler(c echo.Context, clientRedis *redis.Client) error {
 	if err := c.Bind(queryFizzBuzz); err != nil {
 		return models.ResponseFizzBuzz(c, http.StatusBadRequest, nil, false, err.Error())
 	}
-	queryFizzBuzz.Count = 1;
+	queryFizzBuzz.Count = 1
 	jsonFizzBuzz, err := json.Marshal(queryFizzBuzz)
 	if err != nil {
 		return models.ResponseFizzBuzz(c, http.StatusInternalServerError, nil, false, err.Error())
@@ -89,12 +90,12 @@ func FizzBuzzHandler(c echo.Context, clientRedis *redis.Client) error {
 
 	if len(result) > 0 {
 		message := fmt.Sprintf("Résultats de FizzBuzz pour les valeurs Int1: %v, Int2: %v, Str1: %v, Str2: %v et limite: %v.",
-		queryFizzBuzz.Int1,
-		queryFizzBuzz.Int2,
-		queryFizzBuzz.Str1,
-		queryFizzBuzz.Str2,
-		queryFizzBuzz.Limit)
-		
+			queryFizzBuzz.Int1,
+			queryFizzBuzz.Int2,
+			queryFizzBuzz.Str1,
+			queryFizzBuzz.Str2,
+			queryFizzBuzz.Limit)
+
 		return models.ResponseFizzBuzz(c, http.StatusOK, result, true, message)
 	}
 

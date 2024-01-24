@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"os"
 
+	"fizzBuzz/models"
+
 	"github.com/go-redis/redis/v8"
-	"training.go/fizzBuzz/models"
 )
 
 var ctx = context.Background()
@@ -65,5 +66,3 @@ func StoreEvent(ClientRedis *redis.Client, key string, dataJson []byte) error {
 	}
 	return nil
 }
-
-
